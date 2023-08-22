@@ -14,6 +14,9 @@ The following guides illustrate how to use some features concretely:
 
 * [Samples for using Apache Kafka Streams with Spring Cloud stream](https://github.com/spring-cloud/spring-cloud-stream-samples/tree/master/kafka-streams-samples)
 
+What is Kafka?
+
+Apache Kafka is a distributed publish-subscribe messaging system and a robust queue that can handle a high volume of data and enables you to pass messages from one end-point to another. Kafka is suitable for both offline and online message consumption. Kafka messages are persisted on the disk and replicated within the cluster to prevent data loss. Kafka is built on top of the ZooKeeper synchronization service. It integrates very well with Apache Storm and Spark for real-time streaming data analysis.
 
 ###Prerequisites
 
@@ -26,6 +29,10 @@ Postman (similar one)
 ###Objectives
 
 This Lab has two parts, the goal is produce and consume messages using Apache Kafka and Spring Boot, we are going to integrate a controller layer in order to send the messages for a topic.
+
+Before proceeding ensure that you have access to an Apache Kafka Instance from your local machine.
+
+	example: telnet 35.153.235.161 9092; 
 
 ###Part One: 
 
@@ -48,6 +55,7 @@ Send and receive Simple String Message
 
 
 ###Part two: 
+
 Send a receive DemoDTO Object as json message
 
 * Create the Producer in our KafkaProducerConfig, use JsonSerializer for this use case, we should create our producerFactory and KafkaTemplate beans but for this scenario we should be able to publish  <String, DemoDTO>.
@@ -67,5 +75,5 @@ Send a receive DemoDTO Object as json message
 	 example:  curl --location 'http://localhost:8085/kafka-app/send-dto/Arturo3/' \--header 'Content-Type: application/json' \--data '{ "demoName":"Test2234",    "demoType":"TestType225",    "id":226}' 
 
 
-Congratulations, you just produced and consumed your Kafka messages as an DemoDTO Obecjt and simple String.
+Congratulations, you just produced and consumed your Kafka messages as an DemoDTO Object and a simple String.
 
